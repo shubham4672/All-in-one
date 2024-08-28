@@ -11,3 +11,35 @@ React JSX rendering:
     ReactDOM.createRoot(document.getElementById('root')).render(
         reactElement
     )
+
+React Hooks:
+
+React Fiber:
+    React Fiber is an ongoing reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
+
+    The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
+
+    Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
+
+Question in React Counter app
+    function App() {
+        function incre() {
+            setCounter(() => counter + 1); // send the changes of useState through batches (React Fiber) therefore send the same counter val
+            setCounter((counter) => counter + 1); // in callback get the prevCounter and then increment it by 1.
+            setCounter((counter) => counter + 1);
+            setCounter((counter) => counter + 1);
+        }
+        function decre() {
+            setCounter(() => counter - 1);
+        }
+        const [counter, setCounter] = useState(0);
+    }
+    Initial State: Assume count is initially 69.
+    First Call: setCount(count + 1) schedules a state update to set count to 70 (69 + 1).
+    Second Call: setCount(count + 1) schedules another state update to set count to 70 (69 + 1), because count is still 69 in this scope.
+    Third Call: setCount(count + 1) schedules yet another state update to set count to 70 (69 + 1), again because count is still 69 in this scope.
+
+    In case of functional updater syntax React ensures that changes are made to the latest state of the count hence each function gets access to the latest state of the count variable:
+    First Call: setCount(count =>count+1) schedules a state update to set count to 70
+    Second Call : schedules a state update to set count to (70+1) because count is now 70 in this scope and so on...
+
