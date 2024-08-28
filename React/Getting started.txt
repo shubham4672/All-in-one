@@ -1,0 +1,13 @@
+React JSX rendering:
+    In React, JSX (which stands for JavaScript XML) allows you to write HTML elements directly within JavaScript. When a JSX component is processed by React, it is first compiled into a JavaScript object representation. This object, often referred to as a "React element," describes the structure of the component, including the HTML elements, attributes, and children.
+
+    React then uses this object to efficiently update the DOM. When the component is rendered, React compares the newly generated object with the previous one (using a process called "reconciliation"). Based on this comparison, React updates only the necessary parts of the actual DOM, ensuring efficient rendering.
+
+    const reactElement=React.createElement(
+        'a',
+        {href: 'https://google.com', target: '_blank'},
+        'click me to visit google',
+    )
+    ReactDOM.createRoot(document.getElementById('root')).render(
+        reactElement
+    )

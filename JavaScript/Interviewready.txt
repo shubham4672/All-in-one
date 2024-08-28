@@ -1,0 +1,93 @@
+What is the difference between == and === in JavaScript? 
+    == is known as the loose equality operator in JavaScript. It compares two values for equality after converting them to a common type, which is called type coercion. On the other hand, === is the strict equality operator, which compares both the value and the type without performing any type conversion.
+
+    0 == false  // true
+    0 === false // false
+
+What is the purpose of the bind() method in JavaScript? Can you provide an example of how it might be used?
+    The bind() method is essential when you want to ensure that the this context within a function remains consistent, even when the function is passed around or called in a different context.
+    (in non-strict mode)
+    const person = {
+    name: "Alice",
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+    };
+
+    const greetFunction = person.greet;
+    greetFunction(); // Outputs: Hello, my name is undefined
+
+    const boundGreetFunction = person.greet.bind(person);
+    boundGreetFunction(); // Outputs: Hello, my name is Alice
+
+What is a closure in JavaScript? Can you explain how closures work with an example?
+    A closure in JavaScript is a feature where an inner function has access to the outer (enclosing) function’s variables—even after the outer function has finished executing. Closures allow the inner function to "remember" the environment in which it was created.
+
+    function outerFunction() {
+    let outerVariable = "I'm an outer variable";
+
+    function innerFunction() {
+        console.log(outerVariable);
+    }
+
+    return innerFunction;
+    }
+
+    const closureExample = outerFunction();
+    closureExample(); // Outputs: I'm an outer variable
+
+What are JavaScript promises, and how do they help with asynchronous operations? Can you provide an example of how to create and use a promise?
+    Promises are objects that represent the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+    Key Concepts:
+
+    Pending: The initial state; neither fulfilled nor rejected.
+    Fulfilled: The operation completed successfully, resulting in a value.
+    Rejected: The operation failed, resulting in an error.
+
+    const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log("Promise resolved");
+        resolve("Success"); // Resolves the promise with a value
+    }, 2000);
+    });
+
+    myPromise
+    .then((result) => {
+        console.log("Result:", result); // Handles the resolved value
+    })
+    .catch((error) => {
+        console.error("Error:", error); // Handles any errors
+    });
+
+What is the difference between null and undefined in JavaScript? How would you use them appropriately in your code?
+    null and undefined are both primitive values in JavaScript, but they serve different purposes:
+
+    null:
+        Definition: null is a special value that explicitly represents the absence of any object value. It is often used to indicate that a variable is intended to hold an object but does not currently hold any value.
+        Type: The typeof null returns "object", which is a historical bug in JavaScript but is kept for backward compatibility.
+
+    undefined:
+        Definition: undefined is the value assigned to variables that have been declared but not yet initialized. It also represents the absence of a value in the context of a function’s return value if no explicit return is provided.
+        Type: The typeof undefined returns "undefined".
+
+What are JavaScript closures, and how do they differ from JavaScript callbacks? Can you provide an example illustrating the difference between the two?
+    Closures:
+
+    Definition: A closure is a feature in JavaScript where an inner function retains access to variables and parameters of its outer function even after the outer function has finished executing.
+    Purpose: Closures are used to create private variables, manage state, and encapsulate functionality.
+
+    Callbacks:
+    Definition: Callbacks are functions that are passed as arguments to other functions and are executed later, usually in response to an event or as part of an asynchronous operation. They are used to handle results or perform actions once a specific task is completed.
+
+What is event delegation?
+    Definition: Event delegation is a technique where a single event listener is added to a parent element rather than attaching individual listeners to each child element. This approach leverages event bubbling to handle events for multiple child elements efficiently.
+
+    const itemList = document.getElementById("itemList");
+
+    itemList.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") { // Check if the clicked element is an <li>
+        event.target.style.color = "blue"; // Change color of the clicked item
+    }
+    });
+

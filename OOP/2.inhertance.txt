@@ -1,0 +1,150 @@
+1. Inheritance
+    when we construct a new class from existing class in such a way that the new class access all the features and properties of existing class class Inheritance.
+
+    > In java, extends keyword is used to perform inheritance.
+    class subclass extends superclass { 
+        // body of class
+    }
+
+    > It provides code reusability.
+
+    > We can't access private members of super class through inheritance.
+
+    > A subclass contains all the features of super class. So, we should create the object of subclass.
+    
+    > Method overriding only possible through inheritance.
+
+    Types of inheritance:
+    > Single/Simple inheritance: A subclass inherits from one superclass.
+
+    > Multilevel Inheritance: A class can be derived from another derived class.
+
+    > Hierarchical Inheritance: Multiple subclasses inherit from a single superclass.
+
+2. Why JAVA doesn't support multiple inheritance
+    whenever a sub class wants to inherit the properties of two or more super class that have same method, java compiler will not be able to decide which class method to inherit.
+    Then there might be a chance of memory duplication.
+
+3. super keyword
+    super keyword refers to the objects of super class. It is used to call the super class variable, method and constructor through sub class object.
+
+    To avoid the confustion between the super class and sub class variables and methods that have same name we use super keyword.
+    > for same variables
+        class Test{
+            int a=10;
+
+        }
+        class Test2 extends Test{
+            int a=20;
+            void show(){
+                System.out.println(a); // 20
+                System.out.println(super.a); // 10
+            }
+        }
+        public class SuperKeyword extends Test2{
+            public static void main(String[] args) {
+                Test2 obj=new Test2();
+                obj.show();
+            }
+        }
+
+    > for same method
+        class Test{
+            int a=10;
+            void show(){
+                System.out.println(a);
+            }
+        }
+        class Test2 extends Test{
+            int a=20;
+            void show(){
+                super.show();
+                System.out.println(a);
+            }
+        }
+        public class SuperKeyword extends Test2{
+            public static void main(String[] args) {
+                Test2 obj=new Test2();
+                obj.show();
+            }
+        }
+    > for constructor
+        Default constructor will automatically add the super keyword in the sub-class constructor, but in case of parameterized constructor we need to explictly write super keyword.
+
+        >for default constructor
+            class Test{
+                int a=10;
+                Test(){
+                    System.out.println(a);
+                }
+            }
+            class Test2 extends Test{
+                int a=20;
+                Test2(){
+                    System.out.println(a);
+                }
+            }
+            public class SuperKeyword extends Test2{
+                public static void main(String[] args) {
+                    Test2 obj=new Test2(); // will call the super class constructor automatically
+                    // Output: 10 20
+                }
+            }
+        >for parameterized constructor
+            class Test{
+                Test(int a){
+                    System.out.println(a);
+                }
+            }
+            class Test2 extends Test{
+                Test2(){
+                    super(29);
+                    System.out.println("Super keyword");
+                }
+            }
+            public class SuperKeyword extends Test2{
+                public static void main(String[] args) {
+                    Test2 obj=new Test2();
+                }
+            }
+
+4. this keyword
+    > this keyword refers to the current object inside a method or constructor.
+
+    > whenever the name of instance and local variable is same then we should use this keyword, to avoid confusion.(otherwise print the default value).
+    class A{
+        int a; // instance variable
+        A(int a){ // local variable
+            this.a=a; // instance varaible = local variable
+        }
+    }
+
+    > It is also used when we want to call the default constructor of its own class. It can also be used to call the parameterized constructor of its own class.
+        class Demo{
+            Demo(){
+                System.out.println("Called through parameterized constructor");
+            }
+            Demo(int a){
+                this();
+                System.out.println(a);
+            }
+        }
+        public class thisKeyword {
+            public static void main(String[] args) {
+                Demo obj=new Demo(10);
+            }
+        }
+
+        class Demo{
+            Demo(){
+                this(10);
+            }
+            Demo(int a){
+                System.out.println(a);
+            }
+        }
+        public class thisKeyword {
+            public static void main(String[] args) {
+                Demo obj=new Demo();
+            }
+        }

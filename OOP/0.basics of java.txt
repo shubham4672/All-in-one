@@ -1,0 +1,127 @@
+1. Is Java Platform Independent if then how?
+    Java achieves platform independence through its use of the Java Virtual Machine (JVM). Java code is written once and then compiled into bytecode, which is a platform-neutral format (.class). Although JVM is platform dependent.
+
+2. What are the top Java Features?
+    Java is one the most famous and most used language in the real world, there are many features in Java that makes it better than any other language:
+    Simple, Platform Independent, Robust(garbage collection, exception handling), Object oriented, secured(abstraction), high performance, multithreaded.
+
+3. Can we execute a java program without a main() method?
+    Yes, you can compile and execute without main method by using a static block. However, after static block executes, you will get an error saying no main method found.
+
+4. Difference between JVM, JRE, and JDK.
+    JDK (Java Development Kit): It is a software development environment used to develop Java applications.
+
+    JRE (Java Runtime Environment): It provides libraries, Java Virtual Machine (JVM), and other components to run applications written in Java.
+
+    JVM (Java Virtual Machine): It is an abstract machine that enables your computer to run a Java program.
+
+5. What is a classloader?
+    Class loaders are part of JRE and are responsible for loading Java classes dynamically to the JVM (Java Virtual Machine) during runtime.
+
+6. Explain public static void main(String args[]) in Java.
+    In Java, we declared the main function as a public static void main (String args[]).
+        > public is the access modifier responsible for mentioning who can access the element or the method.
+        > The static keyword allows the main method to be called without creating an instance of the class. Since the main method is the entry point of the application, it must be static so that the JVM can invoke it without needing to instantiate the class.
+        > void this specifies that the main method does not return any value.
+        > main this is the name of the method. It is a standard method name that the JVM looks for when starting a Java application.
+        > String args[] is the parameter to the main method and it stores Java command-line arguments and is an array of type java.lang.String class.
+
+7. What is the difference between == and equals() in Java?
+    == checks if two references point to the same memory location, while equals() checks for value equality between two objects.
+
+8. What is Java String Pool?
+    A Java String Pool is a place in heap memory where all the strings defined in the program are stored. A separate place in a stack is there where the variable storing the string is stored. Whenever we create a new string object, JVM checks for the presence of the object in the String pool, If String is available in the pool, the same object reference is shared with the variable, else a new object is created.
+
+    public class Immutablestrings {
+        public static void main(String[] args) {
+        String name = "John";
+        String anotherName ="John"; // both points name and anotherName to same String object to save memory
+        String aThirdName = new String("John");
+        System.out.println(name == anotherName); // true
+        System.out.println(aThirdName == anotherName); // false
+    }
+
+9. How many types of packages are there in Java?
+    There are two types of packages in Java
+        User-defined packages
+        Build In packages (util, lang, net, io)
+
+10. Data types in java.
+    Primitive data are single values with no special capabilities. There are 8 primitive data types:
+
+    boolean: stores value true or false (default is false)
+    byte: stores an 8-bit signed two’s complement integer (between -128 to 127. default value is 0)
+    char: stores a single 16-bit Unicode character (default value is \u0000 null character)
+    short: stores a 16-bit signed two’s complement integer
+    int: stores a 32-bit signed two’s complement integer
+    long: stores a 64-bit two’s complement integer
+    float: stores a single-precision 32-bit floating-point (0.0f)
+    double: stores a double-precision 64-bit floating-point (0.0d)
+
+    Non-primitive data types in Java are not predefined. They are created by the programmer. They reference a memory location where data is stored
+
+    Strings
+    Array
+    Class
+    Object
+    Interface
+
+11. Pass by value (https://youtu.be/-5NC5_sI-vQ?si=-huDztQmSu_pInWJ)
+    When you pass a variable to a method in Java, you are always passing a copy of the value of that variable. This holds true for both primitive data types and object references. The key point is that Java never passes the actual variable itself; it passes a copy of its value.
+
+        public class Example {
+            public static void modifyValue(int x) {
+                x = 10;
+            }
+
+            public static void main(String[] args) {
+                int num = 5;
+                modifyValue(num);
+                System.out.println(num); // Outputs 5, not 10
+            }
+        }
+
+
+    For objects, the "value" that gets passed is the reference to the object, not the actual object itself. The reference is essentially a memory address pointing to the object in the heap.
+        class MyClass {
+            int value;
+        }
+
+        public class Example {
+            public static void modifyObject(MyClass obj) {
+                obj.value = 10;
+            }
+
+            public static void main(String[] args) {
+                MyClass myObj = new MyClass();
+                myObj.value = 5;
+                modifyObject(myObj);
+                System.out.println(myObj.value); // Outputs 10
+            }
+        }
+    Example of No Reference Change:
+        public class Example {
+            public static void modifyReference(MyClass obj) {
+                obj = new MyClass(); // This changes the local reference only
+                obj.value = 20;
+            }
+
+            public static void main(String[] args) {
+                MyClass myObj = new MyClass();
+                myObj.value = 5;
+                modifyReference(myObj);
+                System.out.println(myObj.value); // Outputs 5, not 20
+            }
+        }
+
+12. What are HashMap and HashTable?
+    HashMap: Allows null values and is unsynchronized(Not thread-safe better performance in signle threaded environment).
+    HashTable: Does not allow null values and is synchronized(Thread-safe but performance trade off).
+
+13. What is the difference between String, StringBuilder, and StringBuffer?
+    String: Immutable sequence of characters.
+    StringBuilder: Mutable sequence of characters, not thread-safe.
+    StringBuffer: Mutable sequence of characters, thread-safe.
+
+14. Java strings are Immutable
+    Because it saves a lot of memory with the help of stringpool and second reason is security and thread safe.

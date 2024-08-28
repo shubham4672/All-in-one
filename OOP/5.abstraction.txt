@@ -1,0 +1,43 @@
+1. Abstraction
+    Abstraction is a concept that allows you to hide the complex implementation details and expose only the essential features of an object.
+
+    Advantages of abstraction are security and enhancement.
+
+    Abstraction can be achieved by abstract class and interface.
+
+2. What is abstract class
+    > We can't create the object of abstract class.
+    Abstract Class:
+    An abstract class is a class that cannot be instantiated on its own and is meant to be subclassed. It can contain abstract methods (methods without a body) as well as concrete methods (methods with a body).
+        abstract class Animal {
+            abstract void sound(); // Abstract method
+
+            void sleep() { // Concrete method
+                System.out.println("This animal sleeps.");
+            }
+        }
+
+        class Dog extends Animal {
+            void sound() { // Implementation of the abstract method
+                System.out.println("The dog barks.");
+            }
+        }
+    
+    > It may or may not contain abstract methods.
+    > It can have abstract and non-abstract methods.
+    > To use an abstract class, you have to inherit it from sub classes.
+    > If a class contains partial implementation then we should declare a class as abstract.
+
+    Abstract Methods:
+    Abstract methods are declared in an abstract class and do not have a body. They are intended to be implemented by subclasses.
+        abstract class Animal {
+            abstract void sound(); // Abstract method
+        }
+
+        class Cat extends Animal {
+            void sound() {
+                System.out.println("The cat meows.");
+            }
+        }
+
+3. 

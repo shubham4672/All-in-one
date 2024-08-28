@@ -1,0 +1,30 @@
+1. What is Encapsulation
+    Encapsulation is a mechanism through which we can warp the data members and member methods of a class in a single unit.
+
+    > Declare the class variables as private to make it a single unit.
+
+    > Declare the class methods as public so that we can access the variables.
+
+    eg. A class is the best example of encapsulation.
+
+2. Example of encapsulation
+    Encapsulation is a combination of data hiding and abstraction.
+        class Encap{
+            private int value; // data hiding
+            public void setValue(int x){ // data abstraction
+                value=x;
+            }
+            public int getValue(){
+                return value;
+            }
+        }
+        public class JavaEncapsulation {
+            public static void main(String[] args) {
+                Encap obj=new Encap();
+                obj.setValue(199);
+                System.out.println(obj.getValue());
+            }
+        }
+
+3. Usage of encapsulation
+    Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized parties' direct access to them.

@@ -1,0 +1,214 @@
+OOPS
+    OOP stands for object oriented programming language, the main purpose of OOP is to deal with real world entity using programming language. Features are classes, objects, inheritance, polymorphism, encapsulation, abstraction.
+
+Classes
+    A class is a named group of properties and functions
+    class Student{
+        int[] roll=new int[5];
+        String[] names=new String[5];
+    }
+    class is a templete for an object. It is a logical construct. Class is not a real world entity which does not requires any space in memory. For example: A class Car(templete) with properties/attributes like engine, model, price, number of seats (are almost same in all cars).
+
+    Classes are of two types:
+    > Pre-defined (Scanner, System, String)
+    > User-defined (Animal, Car, Test)
+
+Objects
+    Object is a physical entity which requires space in memory (heap). An object is a self contained entity that encapsulates both data (attributes) and behaviour (methods).
+
+    Object is an instance(member/variable) of a class. When we declare an object, we're creating an instance of the class
+
+    Objects are characterized by three properties:
+
+    1. State (identity that distinguishes one object from other)
+    2. Identity (where it's value is stored in memory)
+    3. Behaviour (effect of data type operations)
+
+Instance variables
+    variables that are defined within a class but outside of any method. They are associated with instances (objects) of that class, meaning each object has its own separate copy of these variables. 
+
+    class Car{
+        // instance variables
+        String color;
+        String model;
+        Car(){
+            this.color=color; // this variable refers to current object's instance variable
+            this.model=model;
+        }
+    }
+
+Dot Operator
+    a dot operator or a seperator links the names of object with instance variable.
+
+(new) keyword
+    a new keyword dynamically allocates memory object(at run time) and returns reference(address in memory) to it. Reference is then stored in a variable.
+
+    Car myCar = new Car(); // myCar stores the memory address of Car object
+    compile time (Compiler) | happens at runtime (JVM)
+
+    In JAVA, we can't manipulate references due to safety reasons.
+
+Constructor 
+    constructor is a special methods used to initialize object(instance variable) and there name is same as class name with no return type. (Instance variables are part of the object only)
+
+    1. Default Constructor: A constructor that has no parameters is known as default the constructor.
+
+    2. Parameterized Constructor:  A constructor that has parameters is known as parameterized constructor. If we want to initialize fields of the class with our own values, then use a parameterized constructor.
+
+    3. Copy Constructor: A constructor that creates a new object by copying another object of the same class. It is used to create a copy of an existing object.
+    class Test{
+        private int a;
+        Test(){
+            a=10;
+        }
+        Test(Test ref){ // copy constructor
+            a=ref.a;
+        }
+    }
+
+    4. Private Constructor: In java, it's possible to make a private constructor but we can't access private members outside of class.
+
+Final keyword
+    The final method in Java is used as a non-access modifier applicable only to a variable, a method, or a class. It is used to restrict a user in Java.
+
+    > Final primitive variable value cannot be changed with final. Final object references cannot be reassigned to other object but it's value can be changed. eg s1.name="random".
+        > eg. final float PI=3.14f        final Student s1=new Student();
+    > Final methods cannot be overridden by subclass.
+    > Final classes prevent inheritance.
+
+Finalize() keyword
+    Deprected, but provides oppertunity to do something by garbage collector before an object is garbage collected.
+
+Wrapper class
+    In JAVA, the wrapper class is an object class that encapsulates the primitive data types. Java contains 8 wrapper classes. (They are Boolean, Byte, Short, Integer, Character, Long, Float, and Double)
+
+    Need of wrapper class:
+    > Wrapper classes are final and immutable.
+    > Provides methods like valueOf(), parseInt(), etc.
+    > It provides the feature of autoboxing and unboxing.
+
+Packages
+    Packages are containers for classes. Used to avoid name conflicts and to control access to class, interface and methods
+
+    To locates packages JAVA first look in current working directory. If a package isn't there it checks paths specified in the classpath environment variable. After you can use -classpath option with java and javac to specify path to your classes.
+
+    Good Practice: ensure unique package names like com.mycompany.projectname which ensures global uniqueness.
+
+Static keyword
+    Static keyword is a non-access modifier mainly used for memory management and defining class-level members that can be accessed without creating an instance of the class.
+
+    > Static Variables: A static variable is shared among all instances of a class. It belongs to the class itself, not to any specific instance, which means there is only one copy of the static variable in memory(directly called by classname)
+
+    Usage: Static variables are often used for constants or shared resources like counters.
+        class MyClass {
+            static int counter = 0; // Shared by all instances
+
+            MyClass() {
+                counter++;
+            }
+        }
+        public class Example {
+            public static void main(String[] args) {
+                MyClass obj1 = new MyClass();
+                MyClass obj2 = new MyClass();
+                System.out.println(MyClass.counter); // Outputs 2
+            }
+        }
+
+    > Static Methods: A static method belongs to the class rather than any specific instance of the class. It can be called without creating an instance of the class. Use static methods for operations that are not dependent on instance variables, such as utility or helper methods.
+        class Utility {
+            static int add(int a, int b) {
+                return a + b;
+            }
+        }
+
+        public class Example {
+            public static void main(String[] args) {
+                int sum = Utility.add(5, 10); // No need to create an instance of Utility
+                System.out.println(sum); // Outputs 15
+            }
+        }
+
+    > Static Block: A static block, also known as a static initializer, is used to initialize static variables. It is executed when the class is first loaded into memory, before any objects are created. (exectues once)
+    Execution flow: Static block > Instance block > Constructor > Normal Method
+    Usage: Static blocks are typically used for complex static variable initialization.
+        class MyClass {
+            static int num;
+
+            static {
+                num = 10; // Static block initializes the static variable
+                System.out.println("Static block executed");
+            }
+        }
+
+        public class Example {
+            public static void main(String[] args) {
+                MyClass obj = new MyClass(); // Static block executed before this line
+                System.out.println(MyClass.num); // Outputs 10
+            }
+        }
+
+    > Static Inner Classes: A static inner class (also known as a static nested class) is associated with the outer class, not with an instance of the outer class. It can access static members of the outer class but cannot directly access non-static members.
+        class OuterClass {
+            static int outerStaticVar = 5;
+
+            static class StaticInnerClass {
+                void display() {
+                    System.out.println("Outer static variable: " + outerStaticVar);
+                }
+            }
+        }
+
+        public class Example {
+            public static void main(String[] args) {
+                OuterClass.StaticInnerClass inner = new OuterClass.StaticInnerClass();
+                inner.display(); // Outputs: Outer static variable: 5
+            }
+        }
+
+    Note: To access a non-static member in a static context, you need to explicitly use an object reference:
+        class Main {
+            void greeting() {
+                System.out.println("Hello!");
+            }
+
+            static void fun() {
+                // greeting(); // Cannot use this directly since greeting() is non-static
+
+                Main obj = new Main();
+                obj.greeting(); // This works because we are using an instance of the class
+            }
+        }
+
+Instance block
+    Instance block is similar to method with no name and deals with object, it can be written inside a class only. (cannot be called without an object)
+    > If always executed before the constructor.
+    > We can use variable only inside instance block.
+    > Usage: write time consuming code inside an instance block.
+
+Singleton Class
+    A Singleton class ensures that only one instance of the class is created throughout the application. This is useful for scenarios like managing shared resources.
+        public class Singleton {
+        private static Singleton instance; // Step 1: Create a private static instance of the class
+
+        private Singleton() {
+            // private constructor to prevent instantiation
+        }
+        public static Singleton getInstance() { // Provide a public static method that returns the instance of the class
+            if (instance == null) {
+                instance = new Singleton(); // Lazy initialization
+            }
+            return instance;
+        }
+        
+        public static void main(String[] args) {
+            Singleton obj1 = Singleton.getInstance();
+            Singleton obj2 = Singleton.getInstance();
+            Singleton obj3 = Singleton.getInstance();
+
+            // All three will refer to the same object
+            System.out.println(obj1 == obj2); // true
+            System.out.println(obj2 == obj3); // true
+        }
+    }
+ 

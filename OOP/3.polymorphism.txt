@@ -1,0 +1,57 @@
+1. Polymorphism
+    It's a greek word which means same object having different behaviour.
+
+    Polymorphism can implemented by two ways:
+        > Compile time Polymorphism (Static/Early binding Polymorphism)
+        > Runtime Polymorphism (Dynamic/Late binding Polymorphism)
+
+2. Compile time polymorphism
+    A polymorphism which exists at the time of compilation is called compile time polymorphism or early binding or static polymorphism.
+
+    eg. method overloading
+    whenever a class contains more than one methods with same name and different types or different number of paramerters is called method overloading.
+
+        class Addition{
+            int a; int b; int c;
+            void add(int a, int b){
+                System.out.println(a+b);
+            }
+            void add(int a, int b, int c){
+                System.out.println(a+b+c);
+            }
+        }
+
+        public class MethodOverloading {
+            public static void main(String[] args) {
+                Addition obj=new Addition();
+                obj.add(19, 19);
+                obj.add(19,19, 10);
+            }
+        }
+    
+    Compiler knows which method gets invoked through paramerters.
+
+3. Runtime polymorphism
+    A polymorphism which exists at the time of execution of a program is run time polymorphism.
+
+    eg. method overriding.
+    whenever we write method in super and sub classes in such a way that method name and paramerters are same that is methdo overriding.It cannot be performed without inheritance.
+    Note: A method will first check is it exist in super class, if no then compilation error if yes then it will check is the method overriden or not if no then it will call method of super class and if yes it will called the method of sub class.
+
+    class A{
+        void show(){
+            Systme.out.println("Cannot show");
+        }
+    }
+    class B extends A{
+        @Override
+        void show(){
+            System.out.println("Can be showed");
+        }
+    }
+    public class Demo{
+        public static void main(String[] args){
+            A obj=new B();
+            obj.show(); // Can be showed
+        }
+    }
