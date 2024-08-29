@@ -13,13 +13,38 @@ React JSX rendering:
     )
 
 React Hooks:
+    Hooks are functions that let you “hook into” React state and lifecycle features from function components.
+    
+    > The useState hook is used to add state to a function component.
+    > The useEffect hook lets you perform side effects in function components, such as fetching data, subscribing to a service, or manually changing the DOM.
+    > The useContext hook lets you consume a context value in function components.
+    > The useRef hook is used to access DOM elements directly or store mutable values that don’t cause a re-render when updated.
+    > The useReducer hook is an alternative to useState for managing complex state logic.
 
 React Fiber:
-    React Fiber is an ongoing reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
+    React Fiber is an reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
 
     The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
 
     Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
+
+    We've established that a primary goal of Fiber is to enable React to take advantage of scheduling. Specifically, we need to be able to
+
+    pause work and come back to it later.
+    assign priority to different types of work.
+    reuse previously completed work.
+    abort work if it's no longer needed.
+
+Reconciliation
+    The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+
+    Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM." A high-level description goes something like this: when you render a React application, a tree of nodes that describes the app is generated and saved in memory. This tree is then flushed to the rendering environment — for example, in the case of a browser application, it's translated to a set of DOM operations. When the app is updated (usually via setState), a new tree is generated. The new tree is diffed with the previous tree to compute which operations are needed to update the rendered app. The key points are:
+
+    Different component types are assumed to generate substantially different trees. React will not attempt to diff them, but rather replace the old tree completely.
+    Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
+
+Reconciliation versus rendering:
+    React is designed so that reconciliation and rendering are separate phases. The reconciler does the work of computing which parts of a tree have changed; the renderer then uses that information to actually update the rendered app.
 
 Question in React Counter app
     function App() {
@@ -43,3 +68,5 @@ Question in React Counter app
     First Call: setCount(count =>count+1) schedules a state update to set count to 70
     Second Call : schedules a state update to set count to (70+1) because count is now 70 in this scope and so on...
 
+Babel
+    Babel is a JavaScript compiler​. Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript code that can be run by older JavaScript engines.
