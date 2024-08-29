@@ -91,3 +91,85 @@ What is event delegation?
     }
     });
 
+What is the purpose of the this keyword in JavaScript, and how does its value differ in various contexts (e.g., global scope, object methods, event handlers)?
+    this refers to the object calling the method. In a global context (outside of any function or object), this refers to the global object (window in browsers, global in Node.js). Inside a regular function, this refers to the global object in non-strict mode but is undefined in strict mode.In an event handler, this typically refers to the DOM element that triggered the event.
+
+    > console.log(this); // In a browser, this refers to the window object.
+    > const myObj = {
+            name: "user",
+            greeting: function() {
+                console.log(`Hello ${this.name}`); // Refers to myObj
+            }
+        };
+        myObj.greeting(); // Output: Hello user
+    > function showThis() {
+        console.log(this); // Refers to the global object
+        }
+        showThis();
+    > const arrowFunction = () => {
+        console.log(this); // Refers to the lexical context (i.e., where the arrow function is defined)
+    };
+    arrowFunction(); // Refers to the global object if defined in the global scope
+    > document.querySelector("button").addEventListener("click", function() {
+        console.log(this); // Refers to the button element
+    });
+
+What are higher-order functions in JavaScript? How are they useful, and can you provide examples of common higher-order functions?
+    A higher-order function is a function that either:
+
+    > Takes one or more functions as arguments.
+        function greet(name) {
+            return `Hello, ${name}!`;
+        }
+
+        function processUser(name, callback) {
+            // callback is a function passed as an argument
+            return callback(name);
+        }
+        console.log(processUser('Alice', greet)); // Output: Hello, Alice!
+
+    > Returns a function as its result.
+        function multiplyBy(factor) {
+            // Returns a new function that multiplies its input by the factor
+            return function (number) {
+                return number * factor;
+            };
+        }
+        const double = multiplyBy(2);
+        console.log(double(5)); // Output: 10
+
+
+    eg. map, reduce, filter
+
+What is a Prototype in JavaScript?
+    Prototype: In JavaScript, every object has a special internal property called [[Prototype]]. This prototype object is used to inherit properties and methods from another object. The prototype mechanism enables JavaScript to support inheritance and share behavior across different objects.
+
+    // Define a prototype object
+    const personPrototype = {
+        greet() {
+            console.log('Hello, ' + this.name);
+        }
+    };
+
+    // Create a new object with personPrototype as its prototype
+    const john = Object.create(personPrototype);
+    john.name = 'John Doe';
+
+    // Access method from the prototype
+    john.greet(); // Output: Hello, John Doe
+
+    // Add a new property directly to john
+    john.age = 30;
+    console.log(john.age); // Output: 30
+
+    // The greet method is inherited from the prototype, but age is unique to john
+
+
+What are JavaScript's prototypal inheritance and how does it differ from classical inheritance? Can you provide an example to illustrate how prototypal inheritance works?
+    Prototypal inheritance is a feature of JavaScript where objects can inherit properties and methods from other objects. Every JavaScript object has an internal property called [[Prototype]] that points to another object. This prototype object can be used to share properties and methods among objects.
+
+    How It Differs from Classical Inheritance:
+
+    Classical Inheritance: Often found in languages like Java, where classes are used to create objects and inheritance is achieved through class hierarchies.
+    Prototypal Inheritance: In JavaScript, objects inherit directly from other objects. You don't need to define a class; you can create and link objects directly.
+
