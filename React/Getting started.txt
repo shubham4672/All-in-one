@@ -17,6 +17,7 @@ React Hooks:
     
     > The useState hook is used to add state to a function component.
     > The useEffect hook lets you perform side effects in function components, such as fetching data, subscribing to a service, or manually changing the DOM.
+    > The useCallback is a React Hook that lets you cache a function definition between re-renders. It only runs when one of its dependencies update.
     > The useContext hook lets you consume a context value in function components.
     > The useRef hook is used to access DOM elements directly or store mutable values that don’t cause a re-render when updated.
     > The useReducer hook is an alternative to useState for managing complex state logic.
