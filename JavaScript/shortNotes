@@ -1,0 +1,110 @@
+<--------------------------------------------HTML---------------------------------------------------->
+&nbsp; -> for spaces
+&lt; -> less than
+&gt; -> greater than
+
+preload in audio tag
+
+shift + tab to reduce indentation
+
+importance of name attribute in form input tag
+
+<--------------------------------------------CSS----------------------------------------------------->
+
+Selectors:
+1. element selector
+2. class selector
+3. id selector
+4. child selector (div > p)
+5. descendant selector (div p) for nested p's inside div
+6. universal selector (*)
+7. Pseudo selector 
+- a:visited{ }
+- a:link{ } 
+- a:click { }
+- Div:hover { }
+- p:first-child { }
+
+Margin >> Border >> Padding >> Content
+
+box-sizing: border box; // covers the height of content with padding and border, not margin
+margin-collapse: collapse // when margin of two containers collide then they share the same margin
+
+text-decoration: underline
+text-decoration-color: #ffffff
+text-decoration-style: wavy
+text-decoration-thickness: 4px
+text-indent: 45px
+text-overflow: clip (cut the extra) || ellipsis (...)
+word-break: break-all
+
+CSS Specificity: (uses Cascade algorithm)
+position > specificity (id > inline css > class > element > universal) > origin > important (!important)
+
+margin-auto // centers a div gives margin from left and right automatically but not works on inline elements and also cannot
+set the width and margin or padding top of inline elements like span or input. To do so use display: inline-block
+
+px depends on resolution,
+vh vw are device specific,
+vmin and vmax depends on orientation, (vmin for vw for phone and vh for pc)
+em is multiplier on current value,
+rem is a multiplier on current value in respective to the root element,
+% depends on parent
+
+box-shadow: h-offset v-offset blur spread color inset
+
+By default list content and list icon is separated 
+list-style-position: inside to combine them for styling
+
+Overflow:
+hidden
+auto
+scroll
+white-space: nowrap (text will go in single line)
+
+Position:
+static
+relative
+absolute
+fixed
+sticky
+Note: filter, transform or perspective properties can also make an element appear as positioned to parent element
+
+CSS variables: (global and local)
+:root{
+    --bg-color: rgb(255, 34, 25);
+}
+use:
+background-color: var(--bg-color);
+Variables can be updated
+
+::before && ::after are used to add elements dynamically through css
+::selection -> to add css to change styles while selection
+:first-letter -> change style of first letter
+
+transform-origin changes the point at which the element 
+transforms rather than moving the entire element (as translate would). 
+The default value is transform-origin: 50% 50%;.
+
+https://www.geeksforgeeks.org/css-grid-layout-the-fr-unit/
+
+Object-fit: cover; // cover the image child with the child width & height
+Object-fit: contains; // contains the image child with the child width & height
+Object-position: top right; // shows the top right of the image cover the image
+
+<--------------------------------------------Javascript---------------------------------------------------->
+
+
+DOM
+document.title, document.body (whole html body code), document.body.childNodes (text nodes, comment and elements).
+document.body.firstChild, lastChild, firstElementChild, lastElementChild
+document.body.firstElementChild.children (only elements)
+nextElementSibiling
+previousElementSibiling
+document.body.firstElementChild.parentElement
+
+Selectors
+document.getElementById
+document.getElementsByClassName
+document.querySelector(.class or #id)
+document.querySelectorAll() -> returns NodeList
