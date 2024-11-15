@@ -108,3 +108,13 @@ document.getElementById
 document.getElementsByClassName
 document.querySelector(.class or #id)
 document.querySelectorAll() -> returns NodeList
+
+innerHTML and outerHTML (provides both inner and outer html)
+textContent
+hasAttribute()
+getAttribute()
+setAttribute()
+removeAttribute()
+ele.attributes();
+document.designMode="on" -> change any webpage
+
