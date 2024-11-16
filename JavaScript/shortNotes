@@ -118,3 +118,27 @@ removeAttribute()
 ele.attributes();
 document.designMode="on" -> change any webpage
 
+Callback function is a function passed into another function as an argument, which is then invokes inside the outer function to complete an action.
+Callback hell or pyramid of doom: more and more nested callbacks, the code becomes deeper and increasingly more difficult to manage.
+The solution of the doom is promises. A promise is a "promise of code execution". The code either executes or fails in both the cases the user get notified. The promise object returned by the new promise constructor has the state (fulfilled, pending, reject) and result(resolved or rejected). The consuming code can receive the final result of a promise through then and catch.
+
+let promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+         console.log("Resolved");
+         resolve("Promise resolved");
+    }, 1000);
+}
+promise.then((a)=>{
+   console.log(a);
+}.catch((err)=>{
+   console.log(err);
+}
+
+Promise API:
+There are 6 static methods of promise class:-
+1. Promise.add(promises) - waits for all promises to resolve and returns the array of there results. If either of one fails, it becomes the error and all other results are ignored.
+2. Promise.allSettled(promises) - waits for all the promises to settle and returns there results as an array of objects with status and value.
+3. Promise.race(promises) - waits for the first promise to settle and its result/error becomes the outcome.
+4. Promise.any(promises) - waits for the first promise to fulfill, and its result becomes the outcome. Throws aggregate error if all the promises are rejected.
+5. Promise.resolve(value) - makes a resolved promise with the given value.
+6. Promise.reject(error) - makes a rejected promise with the given error.
