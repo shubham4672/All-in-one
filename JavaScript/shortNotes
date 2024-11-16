@@ -1,4 +1,4 @@
-<--------------------------------------------HTML---------------------------------------------------->
+<-----------------------------------------------------------HTML------------------------------------------------------------->
 &nbsp; -> for spaces
 &lt; -> less than
 &gt; -> greater than
@@ -9,7 +9,7 @@ shift + tab to reduce indentation
 
 importance of name attribute in form input tag
 
-<--------------------------------------------CSS----------------------------------------------------->
+<-----------------------------------------------------------CSS-------------------------------------------------------------->
 
 Selectors:
 1. element selector
@@ -92,7 +92,7 @@ Object-fit: cover; // cover the image child with the child width & height
 Object-fit: contains; // contains the image child with the child width & height
 Object-position: top right; // shows the top right of the image cover the image
 
-<--------------------------------------------Javascript---------------------------------------------------->
+<---------------------------------------------------------Javascript------------------------------------------------------------->
 
 
 DOM
