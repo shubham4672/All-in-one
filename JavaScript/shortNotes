@@ -160,3 +160,19 @@ Classes are the blueprint of object like an empty form.
 Objects are instance of a class like a filled form.
 Prototype: JavaScript has a special object called prototype that is either null or has reference of another object.
 [[Prototype]] used for prototypal inheritance.
+
+IIFE: Immediately Invoked Function Expression is a JavaScript function that runs as soon as it is defined.
+(function () {
+  // …
+})();
+
+(() => {
+  // …
+})();
+
+(async () => {
+  // …
+})();
+Use cases:
+1. Avoid polluting the global namespace: Because our application could include many functions and global variables from different source files, it's important to limit the number of global variables. If we have some initiation code that we don't need to use again, we could use the IIFE pattern. 
+2. Execute an async function: An async IIFE allows you to use await and for-await even in older browsers and JavaScript runtimes that have no top-level await.
