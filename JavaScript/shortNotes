@@ -142,3 +142,21 @@ There are 6 static methods of promise class:-
 4. Promise.any(promises) - waits for the first promise to fulfill, and its result becomes the outcome. Throws aggregate error if all the promises are rejected.
 5. Promise.resolve(value) - makes a resolved promise with the given value.
 6. Promise.reject(error) - makes a rejected promise with the given error.
+
+Throwing and Handling errors:
+throw SyntaxError("message"); // throwing error
+try{
+   // try this code
+}
+catch{
+    // error got caught
+}
+finally{
+    // this will definitely execute so that if you're in functions it will run after the function value is returned.
+}
+
+Object Oriented Programming Paradigm:
+Classes are the blueprint of object like an empty form.
+Objects are instance of a class like a filled form.
+Prototype: JavaScript has a special object called prototype that is either null or has reference of another object.
+[[Prototype]] used for prototypal inheritance.
