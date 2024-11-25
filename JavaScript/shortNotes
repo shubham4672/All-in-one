@@ -243,3 +243,30 @@ console.log("Ending");
 // Starting
 // Ending
 // done
+
+Working with files: fs module
+1. Create file
+// synchronous blocking code, not recommended
+console.log("Starting");
+fs.writeFileSync("abc.txt", "Hello world", ()=>{
+   console.log("done");
+}
+console.log("Ending);
+// Starting 
+// done
+// Ending
+
+// asynchronous non-blocking code, 
+console.log("Starting");
+fs.writeFile("abc.txt", "Hello world", ()=>{
+    console.log("done");
+}
+console.log("Ending");
+// Starting
+// Ending
+// done
+
+2. Append to file
+fs.appendFile("abc.txt", "msg", (err, data)=>{
+    console.log(data);
+}
