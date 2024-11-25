@@ -185,3 +185,40 @@ Captures any remaining elements in a function parameter list or when destructuri
 
 Spread Operator: let newObj = {...obj1, ...obj2};
 Expands the elements of an iterable (array or object) into individual values.
+
+<!------------------------------------------------------Node.js--------------------------------------------------->
+
+
+npm init -y to start up your project with packagelock and packageLock.json having details of all the modules of your projects.
+
+All the modules require to run the project resides in Node_modules folder.
+
+To create modules in Node.js we have two ways:
+1. using ecmascript (es6) module (new)
+2. using common.js (default)
+
+Using Common.js:
+// importing
+`const fs = require ("fs");`
+
+// exporting - having default and named exports
+module.exports = {a: 1, b: 4}        const a = require ("filename.js");
+
+Using Ecmascript: add "type: module" in package.json file
+// importing
+`import http from "http";`
+
+// exporting - having default and named exports
+// named exports                      // import
+export const a=1;                     import {a} from "./filename.js";
+// default exports                     // import
+const obj={                                import obj or object from "./filename.js";
+   a: 1,
+   b: 7,
+}
+export default obj;
+
+// how we're using these keywords without initializing because the node.js modules code wrapped in the below function: 
+function(exports, require, module, __filename, __dirname){
+    // module code lives here
+}
