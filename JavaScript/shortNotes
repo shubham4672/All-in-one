@@ -270,3 +270,15 @@ console.log("Ending");
 fs.appendFile("abc.txt", "msg", (err, data)=>{
     console.log(data);
 }
+
+Middleware: A function which run before any request and having request and response object.
+app.use((req, res, next) => {
+    // 
+    next();
+});
+An Express application can use the following types of middleware:
+    Application-level middleware (function that we use in our application as middleware)
+    Router-level middleware (middleware used for specific routes)
+    Error-handling middleware (middleware that are used to handle the errors)
+    Built-in middleware (build-in middleware in express eg. app.use(express.static("public"));)
+    Third-party middleware (third party middleware that you accquire and use them in eg. app.use(cookieparser()))
